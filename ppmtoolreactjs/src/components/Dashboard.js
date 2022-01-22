@@ -9,7 +9,7 @@ import ProjectItem from './project/ProjectItem';
   render() {
 
     return ( 
-    <div className="projects">
+    <div className="projects ">
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
