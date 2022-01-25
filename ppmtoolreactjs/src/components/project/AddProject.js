@@ -72,7 +72,7 @@ class AddProject extends Component {
                         {errors.projectName}
                       </div>
                     )}
-                  </div><br/>
+                  </div>
                   <div className="form-group">
                     <input
                       type="text"
@@ -89,7 +89,7 @@ class AddProject extends Component {
                         {errors.projectIdentifier}
                       </div>
                     )}
-                  </div><br/>
+                  </div>
                   <div className="form-group">
                     <textarea
                       className={classnames("form-control form-control-lg", {
@@ -105,7 +105,7 @@ class AddProject extends Component {
                         {errors.description}
                       </div>
                     )}
-                  </div><br/>
+                  </div>
                   <h6>Start Date</h6>
                   <div className="form-group">
                     <input
@@ -115,7 +115,7 @@ class AddProject extends Component {
                       value={this.state.start_date}
                       onChange={this.onChange}
                     />
-                  </div><br/>
+                  </div>
                   <h6>Estimated End Date</h6>
                   <div className="form-group">
                     <input

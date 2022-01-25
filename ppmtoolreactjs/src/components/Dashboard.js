@@ -4,6 +4,7 @@ import CreateProjectButton from "./project/CreateProjectButton";
 import { connect } from "react-redux";
 import { getProjects } from "../actions/projectActions";
 import PropTypes from "prop-types";
+
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getProjects();
@@ -23,7 +24,6 @@ class Dashboard extends Component {
 
               <br />
               <hr />
-              
               {projects.map(project => (
                 <ProjectItem key={project.id} project={project} />
               ))}
@@ -34,13 +34,16 @@ class Dashboard extends Component {
     );
   }
 }
+
 Dashboard.propTypes = {
   project: PropTypes.object.isRequired,
   getProjects: PropTypes.func.isRequired
 };
+
 const mapStateToProps = state => ({
   project: state.project
 });
+
 export default connect(
   mapStateToProps,
   { getProjects }
