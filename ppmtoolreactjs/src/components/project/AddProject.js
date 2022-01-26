@@ -53,8 +53,8 @@ class AddProject extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-8 m-auto">
-                <h5 className="display-4 text-center">Create Project form</h5>
-                <hr />
+                <h5 className="display-4 text-center">CREATE PROJECT</h5>
+                <hr /><br/>
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                     <input
@@ -72,7 +72,7 @@ class AddProject extends Component {
                         {errors.projectName}
                       </div>
                     )}
-                  </div>
+                  </div><br/>
                   <div className="form-group">
                     <input
                       type="text"
@@ -89,7 +89,7 @@ class AddProject extends Component {
                         {errors.projectIdentifier}
                       </div>
                     )}
-                  </div>
+                  </div><br/>
                   <div className="form-group">
                     <textarea
                       className={classnames("form-control form-control-lg", {
@@ -105,7 +105,7 @@ class AddProject extends Component {
                         {errors.description}
                       </div>
                     )}
-                  </div>
+                  </div><br/>
                   <h6>Start Date</h6>
                   <div className="form-group">
                     <input
@@ -115,7 +115,7 @@ class AddProject extends Component {
                       value={this.state.start_date}
                       onChange={this.onChange}
                     />
-                  </div>
+                  </div><br/>
                   <h6>Estimated End Date</h6>
                   <div className="form-group">
                     <input
@@ -125,11 +125,12 @@ class AddProject extends Component {
                       value={this.state.end_date}
                       onChange={this.onChange}
                     />
-                  </div>
+                  </div><br/>
 
                   <input
                     type="submit"
                     className="btn btn-primary btn-block mt-4"
+                    
                   />
                 </form>
               </div>
