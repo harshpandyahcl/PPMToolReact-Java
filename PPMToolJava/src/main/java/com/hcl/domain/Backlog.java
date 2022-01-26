@@ -1,10 +1,8 @@
 package com.hcl.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
 @Entity
 public class Backlog {
     @Id
@@ -13,6 +11,13 @@ public class Backlog {
     private Integer PTSequence = 0;
     private String projectIdentifier;
 
+
+
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn (name= "project_id", nullable = false)
+    private Project project;
+    @JsonIgnore
     public Backlog() {
     }
 
@@ -22,5 +27,29 @@ public class Backlog {
 
     public void setId(Long id) {
         Id = id;
+    }
+
+    public Integer getPTSequence() {
+        return PTSequence;
+    }
+
+    public void setPTSequence(Integer PTSequence) {
+        this.PTSequence = PTSequence;
+    }
+
+    public String getProjectIdentifier() {
+        return projectIdentifier;
+    }
+
+    public void setProjectIdentifier(String projectIdentifier) {
+        this.projectIdentifier = projectIdentifier;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
