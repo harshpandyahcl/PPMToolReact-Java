@@ -1,5 +1,6 @@
 package com.hcl.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.sql.Update;
 
 import javax.persistence.*;
@@ -21,6 +22,12 @@ public class ProjectTask {
     private String status;
     private Integer priority;
     private Date dueDate;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinColumn(name="backlog_id", updatable = false, nullable = false)
+    @JsonIgnore
+    private Backlog backlog;
+
 
     @Column(updatable = false)
     private String projectIdentifier;
@@ -110,6 +117,15 @@ public class ProjectTask {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
+    }
+
 
     @PrePersist
     protected void onCreate(){

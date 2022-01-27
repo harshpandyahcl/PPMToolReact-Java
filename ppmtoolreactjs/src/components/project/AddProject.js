@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { createProject } from "../../actions/projectActions";
 import classnames from "classnames";
 
+
 class AddProject extends Component {
   constructor() {
     super();
@@ -43,9 +44,17 @@ class AddProject extends Component {
     };
     this.props.createProject(newProject, this.props.history);
   }
-
+  
   render() {
     const { errors } = this.state;
+
+    const disablePastDate = () => {
+      const today = new Date();
+      const dd = String(today.getDate() + 1).padStart(2, "0");
+      const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+      const yyyy = today.getFullYear();
+      return yyyy + "-" + mm + "-" + dd;
+  };
 
     return (
       <div>
@@ -112,6 +121,7 @@ class AddProject extends Component {
                       type="date"
                       className="form-control form-control-lg"
                       name="start_date"
+                      min={disablePastDate()}
                       value={this.state.start_date}
                       onChange={this.onChange}
                     />
@@ -122,6 +132,7 @@ class AddProject extends Component {
                       type="date"
                       className="form-control form-control-lg"
                       name="end_date"
+                      max={disablePastDate()}
                       value={this.state.end_date}
                       onChange={this.onChange}
                     />
