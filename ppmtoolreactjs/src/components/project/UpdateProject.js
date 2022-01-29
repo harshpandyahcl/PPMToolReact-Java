@@ -146,7 +146,7 @@ class UpdateProject extends Component {
                     className="form-control form-control-lg"
                     name="end_date"
                     value={this.state.end_date}
-                    max={disablePastDate()}
+                    min={disablePastDate()}
                     onChange={this.onChange}
                   />
                 </div><br/>

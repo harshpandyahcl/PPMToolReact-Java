@@ -132,7 +132,7 @@ class AddProject extends Component {
                       type="date"
                       className="form-control form-control-lg"
                       name="end_date"
-                      max={disablePastDate()}
+                      min={disablePastDate()}
                       value={this.state.end_date}
                       onChange={this.onChange}
                     />
