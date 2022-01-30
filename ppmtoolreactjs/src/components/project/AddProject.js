@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { createProject } from "../../actions/projectActions";
 import classnames from "classnames";
 
-
 class AddProject extends Component {
   constructor() {
     super();
@@ -44,17 +43,9 @@ class AddProject extends Component {
     };
     this.props.createProject(newProject, this.props.history);
   }
-  
+
   render() {
     const { errors } = this.state;
-
-    const disablePastDate = () => {
-      const today = new Date();
-      const dd = String(today.getDate() + 1).padStart(2, "0");
-      const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-      const yyyy = today.getFullYear();
-      return yyyy + "-" + mm + "-" + dd;
-  };
 
     return (
       <div>
@@ -62,8 +53,8 @@ class AddProject extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-8 m-auto">
-                <h5 className="display-4 text-center">CREATE PROJECT</h5>
-                <hr /><br/>
+                <h5 className="display-4 text-center">Create Project form</h5>
+                <hr />
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                     <input
@@ -81,7 +72,7 @@ class AddProject extends Component {
                         {errors.projectName}
                       </div>
                     )}
-                  </div><br/>
+                  </div>
                   <div className="form-group">
                     <input
                       type="text"
@@ -98,7 +89,7 @@ class AddProject extends Component {
                         {errors.projectIdentifier}
                       </div>
                     )}
-                  </div><br/>
+                  </div>
                   <div className="form-group">
                     <textarea
                       className={classnames("form-control form-control-lg", {
@@ -114,34 +105,31 @@ class AddProject extends Component {
                         {errors.description}
                       </div>
                     )}
-                  </div><br/>
+                  </div>
                   <h6>Start Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
                       className="form-control form-control-lg"
                       name="start_date"
-                      min={disablePastDate()}
                       value={this.state.start_date}
                       onChange={this.onChange}
                     />
-                  </div><br/>
+                  </div>
                   <h6>Estimated End Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
                       className="form-control form-control-lg"
                       name="end_date"
-                      min={disablePastDate()}
                       value={this.state.end_date}
                       onChange={this.onChange}
                     />
-                  </div><br/>
+                  </div>
 
                   <input
                     type="submit"
                     className="btn btn-primary btn-block mt-4"
-                    
                   />
                 </form>
               </div>
