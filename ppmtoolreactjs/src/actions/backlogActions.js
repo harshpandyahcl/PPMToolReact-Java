@@ -1,10 +1,15 @@
 import axios from "axios";
-import { GET_ERRORS, GET_BACKLOG, GET_PROJECT_TASK } from "./types";
+import {
+  GET_ERRORS,
+  GET_BACKLOG,
+  GET_PROJECT_TASK,
+  DELETE_PROJECT_TASK
+} from "./types";
 
 export const addProjectTask = (backlog_id,project_task,history) => async dispatch => {
 try {
     await axios.post(`http://localhost:8080/api/backlog/${backlog_id}`, project_task);
-    history.push(`http://localhost:8080/projectBoard/${backlog_id}`);
+    history.push(`/projectBoard/${backlog_id}`);
     dispatch({
       type: GET_ERRORS,
       payload: {}
@@ -54,7 +59,7 @@ export const getBacklog = backlog_id => async dispatch => {
   ) => async dispatch => {
     try {
       await axios.patch(`http://localhost:8080/api/backlog/${backlog_id}/${pt_id}`, project_task);
-      history.push(`http://localhost:8080/projectBoard/${backlog_id}`);
+      history.push(`/projectBoard/${backlog_id}`);
       dispatch({
         type: GET_ERRORS,
         payload: {}
@@ -68,4 +73,16 @@ export const getBacklog = backlog_id => async dispatch => {
   };
 
 
-
+  export const deleteProjectTask = (backlog_id, pt_id) => async dispatch => {
+    if (
+      window.confirm(
+        `You are deleting project task ${pt_id}, this action cannot be undone`
+      )
+    ) {
+      await axios.delete(`/api/backlog/${backlog_id}/${pt_id}`);
+      dispatch({
+        type: DELETE_PROJECT_TASK,
+        payload: pt_id
+      });
+    }
+  };
