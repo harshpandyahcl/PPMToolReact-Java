@@ -90,6 +90,13 @@ class UpdateProjectTask extends Component {
 
   render() {
     const { errors } = this.state;
+    const disablePastDate = () => {
+        const today = new Date();
+        const dd = String(today.getDate() + 1).padStart(2, "0");
+        const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        const yyyy = today.getFullYear();
+        return yyyy + "-" + mm + "-" + dd;
+    };
     return (
       <div className="add-PBI">
         <div className="container">
@@ -140,6 +147,7 @@ class UpdateProjectTask extends Component {
                     type="date"
                     className="form-control form-control-lg"
                     name="dueDate"
+                    min={disablePastDate()}
                     value={this.state.dueDate}
                     onChange={this.onChange}
                   />
