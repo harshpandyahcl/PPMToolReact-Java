@@ -41,18 +41,12 @@ class AddProject extends Component {
       start_date: this.state.start_date,
       end_date: this.state.end_date
     };
+    console.log(newProject)
     this.props.createProject(newProject, this.props.history);
   }
 
   render() {
     const { errors } = this.state;
-    const disablePastDate = () => {
-      const today = new Date();
-      const dd = String(today.getDate() + 1).padStart(2, "0");
-      const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-      const yyyy = today.getFullYear();
-      return yyyy + "-" + mm + "-" + dd;
-  };
 
     return (
       <div>
@@ -61,7 +55,7 @@ class AddProject extends Component {
             <div className="row">
               <div className="col-md-8 m-auto">
                 <h5 className="display-4 text-center">Create Project form</h5>
-                <hr /> <br />
+                <hr />
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                     <input
@@ -79,7 +73,7 @@ class AddProject extends Component {
                         {errors.projectName}
                       </div>
                     )}
-                  </div><br />
+                  </div>
                   <div className="form-group">
                     <input
                       type="text"
@@ -96,7 +90,7 @@ class AddProject extends Component {
                         {errors.projectIdentifier}
                       </div>
                     )}
-                  </div><br />
+                  </div>
                   <div className="form-group">
                     <textarea
                       className={classnames("form-control form-control-lg", {
@@ -112,29 +106,27 @@ class AddProject extends Component {
                         {errors.description}
                       </div>
                     )}
-                  </div><br />
+                  </div>
                   <h6>Start Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
                       className="form-control form-control-lg"
                       name="start_date"
-                      min={disablePastDate()}
                       value={this.state.start_date}
                       onChange={this.onChange}
                     />
-                  </div><br />
+                  </div>
                   <h6>Estimated End Date</h6>
                   <div className="form-group">
                     <input
                       type="date"
                       className="form-control form-control-lg"
                       name="end_date"
-                      min={disablePastDate()}
                       value={this.state.end_date}
                       onChange={this.onChange}
                     />
-                  </div><br />
+                  </div>
 
                   <input
                     type="submit"

@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ProjectTaskRepository extends CrudRepository<ProjectTask, Long> {
-    List<ProjectTask> findByProjectIdentifierOrderByPriority(String id);
 
+    List<ProjectTask> findByProjectIdentifierOrderByPriority(String id);
 
     ProjectTask findByProjectSequence(String sequence);
 }

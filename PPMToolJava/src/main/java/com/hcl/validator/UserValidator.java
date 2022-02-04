@@ -1,6 +1,5 @@
 package com.hcl.validator;
 
-
 import com.hcl.domain.User;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

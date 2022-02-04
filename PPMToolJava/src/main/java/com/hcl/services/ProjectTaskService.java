@@ -1,9 +1,6 @@
 package com.hcl.services;
 
-
-
 import com.hcl.domain.Backlog;
-import com.hcl.domain.Project;
 import com.hcl.domain.ProjectTask;
 import com.hcl.exceptions.ProjectNotFoundException;
 import com.hcl.repositories.BacklogRepository;
@@ -12,6 +9,7 @@ import com.hcl.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @Service
 public class ProjectTaskService {

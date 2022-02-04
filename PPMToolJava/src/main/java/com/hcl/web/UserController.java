@@ -28,10 +28,13 @@ import static com.hcl.security.SecurityConstants.TOKEN_PREFIX;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+
     @Autowired
     private MapValidationErrorService mapValidationErrorService;
+
     @Autowired
     private UserService userService;
+
     @Autowired
     private UserValidator userValidator;
 
@@ -65,9 +68,13 @@ public class UserController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result){
         // Validate passwords match
         userValidator.validate(user,result);
+
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if(errorMap != null)return errorMap;
+
+
         User newUser = userService.saveUser(user);
+
         return  new ResponseEntity<User>(newUser, HttpStatus.CREATED);
     }
 }

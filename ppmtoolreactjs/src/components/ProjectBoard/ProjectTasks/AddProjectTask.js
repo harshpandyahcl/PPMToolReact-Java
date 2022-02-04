@@ -50,22 +50,10 @@ class AddProjectTask extends Component {
       this.props.history
     );
   }
-  
 
   render() {
-
-
     const { id } = this.props.match.params;
     const { errors } = this.state;
-
-    
-    const disablePastDate = () => {
-      const today = new Date();
-      const dd = String(today.getDate() + 1).padStart(2, "0");
-      const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-      const yyyy = today.getFullYear();
-      return yyyy + "-" + mm + "-" + dd;
-  };
     return (
       <div className="add-PBI">
         <div className="container">
@@ -75,7 +63,7 @@ class AddProjectTask extends Component {
                 Back to Project Board
               </Link>
               <h4 className="display-4 text-center">Add Project Task</h4>
-              <p className="lead text-center">Project Name + Project Code</p><br />
+              <p className="lead text-center">Project Name + Project Code</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
@@ -91,7 +79,7 @@ class AddProjectTask extends Component {
                   {errors.summary && (
                     <div className="invalid-feedback">{errors.summary}</div>
                   )}
-                </div><br />
+                </div>
                 <div className="form-group">
                   <textarea
                     className="form-control form-control-lg"
@@ -100,18 +88,17 @@ class AddProjectTask extends Component {
                     value={this.state.acceptanceCriteria}
                     onChange={this.onChange}
                   />
-                </div><br />
+                </div>
                 <h6>Due Date</h6>
                 <div className="form-group">
                   <input
                     type="date"
                     className="form-control form-control-lg"
                     name="dueDate"
-                    min={disablePastDate()}
                     value={this.state.dueDate}
                     onChange={this.onChange}
                   />
-                </div><br />
+                </div>
                 <div className="form-group">
                   <select
                     className="form-control form-control-lg"
@@ -124,7 +111,7 @@ class AddProjectTask extends Component {
                     <option value={2}>Medium</option>
                     <option value={3}>Low</option>
                   </select>
-                </div><br />
+                </div>
 
                 <div className="form-group">
                   <select
@@ -138,7 +125,7 @@ class AddProjectTask extends Component {
                     <option value="IN_PROGRESS">IN PROGRESS</option>
                     <option value="DONE">DONE</option>
                   </select>
-                </div><br />
+                </div>
 
                 <input
                   type="submit"

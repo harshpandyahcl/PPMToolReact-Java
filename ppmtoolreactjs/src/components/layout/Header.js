@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
 class Header extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark  mb-4">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/Dashboard.html">
             Personal Project Management Tool
           </Link>
           <button
@@ -21,22 +20,22 @@ class Header extends Component {
           <div className="collapse navbar-collapse "  id="mobile-nav">
             <ul  className="navbar-nav mr-auto">
               <li className="nav-item">
-              <Link className="nav-link" to="/dashboard">
+                <Link className="nav-link" to="/dashboard">
                   Dashboard
-              </Link>
+                  </Link>
               </li>
             </ul>
 
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-              <Link className="nav-link" to="/register">
+                <Link className="nav-link " to="/register.html">
                   Sign Up
-              </Link>
+                  </Link>
               </li>
               <li className="nav-item">
-              <Link className="nav-link" to="/login">
+                <Link className="nav-link" to="/login.html">
                   Login
-              </Link>
+                  </Link>
               </li>
             </ul>
           </div>

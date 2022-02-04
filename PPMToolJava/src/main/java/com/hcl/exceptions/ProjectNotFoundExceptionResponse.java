@@ -1,19 +1,19 @@
 package com.hcl.exceptions;
 
+
 public class ProjectNotFoundExceptionResponse {
 
-    private String projectNotFound;
+    private String ProjectNotFound;
 
     public ProjectNotFoundExceptionResponse(String projectNotFound) {
-        this.projectNotFound = projectNotFound;
+        ProjectNotFound = projectNotFound;
     }
 
     public String getProjectNotFound() {
-        return projectNotFound;
+        return ProjectNotFound;
     }
 
     public void setProjectNotFound(String projectNotFound) {
-        this.projectNotFound = projectNotFound;
-
+        ProjectNotFound = projectNotFound;
     }
 }
