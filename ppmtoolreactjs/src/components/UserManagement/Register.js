@@ -3,11 +3,9 @@ import { createNewUser } from "../../actions/securityActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
-
 class Register extends Component {
   constructor() {
     super();
-
     this.state = {
       username: "",
       fullName: "",
@@ -19,12 +17,17 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.security.validToken) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
   }
-
   onSubmit(e) {
     e.preventDefault();
     const newUser = {
@@ -33,14 +36,11 @@ class Register extends Component {
       password: this.state.password,
       confirmPassword: this.state.confirmPassword
     };
-
     this.props.createNewUser(newUser, this.props.history);
   }
-
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
   render() {
     const { errors } = this.state;
     return (
@@ -125,11 +125,13 @@ class Register extends Component {
 
 Register.propTypes = {
   createNewUser: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  security: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  errors: state.errors,
+  security: state.security
 });
 export default connect(
   mapStateToProps,

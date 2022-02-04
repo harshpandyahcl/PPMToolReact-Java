@@ -8,23 +8,27 @@ class Login extends Component {
     super();
     this.state = {
       username: "",
-    
       password: "",
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  componentDidMount() {
+    if (this.props.security.validToken) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.security.validToken) {
       this.props.history.push("/dashboard");
     }
-
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
   }
-
   onSubmit(e) {
     e.preventDefault();
     const LoginRequest = {
@@ -36,7 +40,6 @@ class Login extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
   render() {
     const { errors } = this.state;
     return (
@@ -64,7 +67,6 @@ class Login extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.password
                     })}
@@ -86,13 +88,11 @@ class Login extends Component {
     );
   }
 }
-
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   security: PropTypes.object.isRequired
 };
-
 const mapStateToProps = state => ({
   security: state.security,
   errors: state.errors
