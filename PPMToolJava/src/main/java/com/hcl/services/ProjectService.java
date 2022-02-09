@@ -92,4 +92,9 @@ public class ProjectService {
         projectRepository.delete(findProjectByIdentifier(projectid, username));
     }
 
+
+    public Iterable<Project> findAll() {
+        return projectRepository.findAll();
+
+    }
 }
